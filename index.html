@@ -5,64 +5,133 @@
 <title>Blinkbase - Get Things Done Faster</title>
 <style>
 body { background: #0a0a0a; color: white; font-family: Arial; margin: 0; padding: 20px; text-align: center; }
-.logo { color: #FFD700; font-size: 32px; font-weight: bold; margin-top: 20px; }
-.tagline { color: #ccc; font-size: 15px; margin-bottom: 20px; }
-.search { width: 90%; max-width: 400px; padding: 12px; border-radius: 25px; border: none; font-size: 16px; text-align: center; }
-.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 450px; margin: 25px auto; }
+.logo { color: #FFD700; font-size: 32px; font-weight: bold; margin-top: 10px; cursor:pointer; }
+.tagline { color: #ccc; font-size: 14px; }
+.search { width: 90%; max-width: 400px; padding: 12px; border-radius: 25px; border: none; font-size: 15px; text-align: center; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 450px; margin: 20px auto; }
 .card { background: #1a1a1a; border: 1px solid #333; border-radius: 15px; padding: 20px 10px; cursor: pointer; }
-.card:hover { border-color: #FFD700; }
-.emoji { font-size: 28px; }
 .card h3 { color: #FFD700; font-size: 16px; margin: 8px 0 4px; }
 .card p { color: #aaa; font-size: 12px; margin: 0; }
-.btn { background: #FFD700; color: black; border: none; padding: 12px 30px; border-radius: 25px; font-weight: bold; font-size: 16px; margin-top: 10px; }
-.footer { color: #666; font-size: 12px; margin-top: 30px; }
+.emoji { font-size: 28px; }
+.btn { background: #FFD700; color: black; border: none; padding: 12px 30px; border-radius: 25px; font-weight: bold; font-size: 16px; margin-top: 10px; cursor:pointer; }
+.btn2 { background: #222; color: #FFD700; border: 1px solid #FFD700; padding: 8px 20px; border-radius: 20px; margin-top: 10px; cursor:pointer; }
+.box { max-width: 450px; margin: 15px auto; text-align: left; background: #1a1a1a; padding: 18px; border-radius: 15px; border: 1px solid #333; }
+input, textarea, select { width: 100%; padding: 11px; border-radius: 10px; border: none; margin: 8px 0; font-size: 15px; box-sizing: border-box; }
+textarea { height: 90px; }
+.result { background: #111; border: 1px solid #FFD700; border-radius: 12px; padding: 15px; margin-top: 12px; white-space: pre-wrap; text-align: left; font-size: 14px; line-height: 1.6; color: #eee; display: none; }
+.footer { color: #666; font-size: 12px; margin-top: 25px; }
+.hidden { display: none; }
+label { font-size: 13px; color: #FFD700; }
 </style>
 </head>
 <body>
 
-<div class="logo">⚡ BLINKBASE</div>
+<div class="logo" onclick="showHome()">⚡ BLINKBASE</div>
+
+<!-- HOME -->
+<div id="home">
 <p class="tagline">One platform. All your tools. Get things done faster.</p>
-
 <input class="search" id="searchBox" placeholder="Wetin you wan do today? e.g. write essay...">
-
 <div class="grid">
-  <div class="card" onclick="openTool('Write Helper')">
-    <div class="emoji">✍️</div><h3>Write Helper</h3><p>Essays, emails, captions</p>
-  </div>
-  <div class="card" onclick="openTool('Study Helper')">
-    <div class="emoji">📚</div><h3>Study Helper</h3><p>Summarize, explain, quiz</p>
-  </div>
-  <div class="card" onclick="openTool('Business Ideas')">
-    <div class="emoji">💼</div><h3>Business</h3><p>Ideas, plans, pricing</p>
-  </div>
-  <div class="card" onclick="openTool('Daily Planner')">
-    <div class="emoji">📅</div><h3>Planner</h3><p>Plan your day in 1 min</p>
-  </div>
-  <div class="card" onclick="openTool('Creator Studio')">
-    <div class="emoji">🎨</div><h3>Creator Studio</h3><p>Content ideas & scripts</p>
-  </div>
-  <div class="card" onclick="openTool('Translate')">
-    <div class="emoji">🌍</div><h3>Translate</h3><p>English, Pidgin & more</p>
-  </div>
+  <div class="card" onclick="showTool('write')"><div class="emoji">✍️</div><h3>Write Helper</h3><p>Essays, emails, captions</p></div>
+  <div class="card" onclick="showTool('study')"><div class="emoji">📚</div><h3>Study Helper</h3><p>Summarize, explain, quiz</p></div>
+  <div class="card" onclick="showTool('business')"><div class="emoji">💼</div><h3>Business</h3><p>Ideas, plans, pricing</p></div>
+  <div class="card" onclick="showTool('planner')"><div class="emoji">📅</div><h3>Planner</h3><p>Plan your day in 1 min</p></div>
+  <div class="card" onclick="showTool('creator')"><div class="emoji">🎨</div><h3>Creator Studio</h3><p>Content ideas & scripts</p></div>
+  <div class="card" onclick="showTool('translate')"><div class="emoji">🌍</div><h3>Translate</h3><p>English, Pidgin & more</p></div>
+</div>
+<button class="btn" onclick="startNow()">Start Working →</button>
 </div>
 
-<button class="btn" onclick="startNow()">Start Working →</button>
+<!-- WRITE TOOL -->
+<div id="write" class="box hidden">
+<h2 style="color:#FFD700">✍️ Write Helper</h2>
+<label> wetin you wan write about?</label>
+<input id="writeTopic" placeholder="e.g. My dream to become a developer">
+<label>What type?</label>
+<select id="writeType"><option>Essay</option><option>Email</option><option>Instagram Caption</option></select>
+<button class="btn" onclick="doWrite()">Generate →</button>
+<div id="writeResult" class="result"></div>
+<button class="btn2" onclick="showHome()">← Back to Dashboard</button>
+</div>
+
+<!-- STUDY TOOL -->
+<div id="study" class="box hidden">
+<h2 style="color:#FFD700">📚 Study Helper</h2>
+<label>Paste your note / topic here:</label>
+<textarea id="studyInput" placeholder="Paste your school note here... e.g. Photosynthesis is the process by which plants make food using sunlight..."></textarea>
+<button class="btn" onclick="doStudy()">Summarize →</button>
+<div id="studyResult" class="result"></div>
+<button class="btn2" onclick="showHome()">← Back to Dashboard</button>
+</div>
+
+<!-- PLANNER TOOL -->
+<div id="planner" class="box hidden">
+<h2 style="color:#FFD700">📅 Daily Planner</h2>
+<label>List your tasks, separate with comma:</label>
+<input id="planInput" placeholder="e.g. study, gym, code Blinkbase, call mum">
+<button class="btn" onclick="doPlan()">Plan My Day →</button>
+<div id="planResult" class="result"></div>
+<button class="btn2" onclick="showHome()">← Back to Dashboard</button>
+</div>
+
+<!-- OTHER TOOLS -->
+<div id="other" class="box hidden">
+<h2 style="color:#FFD700" id="otherTitle">Tool</h2>
+<p id="otherText">Coming soon!</p>
+<button class="btn2" onclick="showHome()">← Back to Dashboard</button>
+</div>
 
 <p class="footer">Built by Franklin • Blinkbase © 2026<br>For students, creators & business owners</p>
 
 <script>
-function openTool(tool) {
-  alert(tool + " is coming soon!\n\nBlinkbase go help you with " + tool + " very soon. Stay tuned!");
-}
-function startNow() {
-  let q = document.getElementById('searchBox').value;
-  if(q == "") {
-    alert("Welcome to Blinkbase! ⚡\n\nType wetin you wan do for the search box above.");
-  } else {
-    alert("You wan do: " + q + "\n\nBlinkbase AI dey work on am for you... Coming soon!");
+function hideAll(){ ['home','write','study','planner','other'].forEach(id=>document.getElementById(id).classList.add('hidden')); }
+function showHome(){ hideAll(); document.getElementById('home').classList.remove('hidden'); }
+function showTool(name){
+  hideAll();
+  if(name=='write'||name=='study'||name=='planner'){ document.getElementById(name).classList.remove('hidden'); }
+  else{
+    document.getElementById('other').classList.remove('hidden');
+    let titles={business:'💼 Business',creator:'🎨 Creator Studio',translate:'🌍 Translate'};
+    document.getElementById('otherTitle').innerText=titles[name]||'Tool';
+    document.getElementById('otherText').innerText=titles[name]+' dey come next! We don finish Write, Study & Planner first. Stay tuned!';
   }
 }
+function startNow(){
+  let q=document.getElementById('searchBox').value.toLowerCase();
+  if(q==""){ alert("Welcome to Blinkbase! ⚡\nType wetin you wan do for search box."); }
+  else if(q.includes('write')||q.includes('essay')||q.includes('email')||q.includes('caption')) showTool('write');
+  else if(q.includes('study')||q.includes('summar')||q.includes('note')||q.includes('school')) showTool('study');
+  else if(q.includes('plan')||q.includes('day')||q.includes('task')) showTool('planner');
+  else alert("You wan do: "+q+"\n\nTry Write Helper, Study Helper or Planner for now!");
+}
+function doWrite(){
+  let topic=document.getElementById('writeTopic').value || "My Dream";
+  let type=document.getElementById('writeType').value;
+  let out="";
+  if(type=="Essay") out="ESSAY: "+topic+"\n\nIntroduction:\n"+topic+" is a very important topic in our world today. Many people talk about it because it affects our daily life and our future.\n\nBody:\nFirst, "+topic+" helps us understand ourselves better. Second, it teaches us discipline and focus. Third, if we take it seriously, it can open new opportunities for us.\n\nConclusion:\nIn conclusion, "+topic+" is not just an idea, it is a journey. If we keep learning and keep pushing, we will succeed.\n\n— Written with Blinkbase ✍️";
+  if(type=="Email") out="Subject: Regarding "+topic+"\n\nHello,\n\nI hope you are doing well. I am writing to you about "+topic+".\n\nI would love to discuss this further and hear your thoughts. Please let me know when is a good time to talk.\n\nThank you for your time.\n\nBest regards,\nFranklin";
+  if(type=="Instagram Caption") out="✨ "+topic+" ✨\n\nNo be luck. Na focus + consistency. 🔥\n\nSmall small, we dey build something big.\n\n#Blinkbase #FranklinBuilds #NaijaToTheWorld";
+  let r=document.getElementById('writeResult'); r.style.display='block'; r.innerText=out;
+}
+function doStudy(){
+  let text=document.getElementById('studyInput').value;
+  if(text.length<20){ alert("Paste longer note abeg, at least 2-3 sentences"); return; }
+  let sentences=text.split('.').filter(s=>s.trim().length>5);
+  let summary=sentences.slice(0,2).join('. ') + ".";
+  let out="📚 SUMMARY:\n"+summary+"\n\n✅ 3 KEY POINTS:\n1. "+(sentences[0]||"Main idea").trim()+"\n2. "+(sentences[1]||"Supporting detail").trim()+"\n3. This topic is important to remember for your exam.\n\n❓ QUICK QUIZ:\nQ: Wetin be the main idea of this note?\nA: "+summary+"\n\nTip: Read am 2 times, then try explain am without looking!";
+  let r=document.getElementById('studyResult'); r.style.display='block'; r.innerText=out;
+}
+function doPlan(){
+  let raw=document.getElementById('planInput').value;
+  if(!raw){ alert("Type your tasks first! e.g. study, gym, code"); return; }
+  let tasks=raw.split(',').map(t=>t.trim()).filter(t=>t);
+  let times=["8:00 AM","10:00 AM","12:00 PM","2:00 PM","4:00 PM","6:00 PM","8:00 PM"];
+  let out="📅 YOUR PLAN FOR TODAY:\n\n";
+  tasks.forEach((t,i)=>{ out+=(times[i]||"9:00 PM")+" - "+t.charAt(0).toUpperCase()+t.slice(1)+"\n"; });
+  out+="\n💡 Blinkbase Tip: Do the hardest task first. Drink water. No procrastinate!";
+  let r=document.getElementById('planResult'); r.style.display='block'; r.innerText=out;
+}
 </script>
-
 </body>
-</html>
+  </html>
