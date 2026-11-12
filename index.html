@@ -1,42 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My First Website</title>
-  <style>
-    body {
-      background-color: black;
-      color: white;
-      text-align: center;
-      font-family: sans-serif;
-      padding-top: 80px;
-    }
-    h1 { color: yellow; }
-    button {
-      background-color: yellow;
-      color: black;
-      padding: 12px 25px;
-      border: none;
-      border-radius: 20px;
-      font-size: 18px;
-    }
-  </style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blinkbase - Get Things Done Faster</title>
+<style>
+body { background: #0a0a0a; color: white; font-family: Arial; margin: 0; padding: 20px; text-align: center; }
+.logo { color: #FFD700; font-size: 32px; font-weight: bold; margin-top: 20px; }
+.tagline { color: #ccc; font-size: 15px; margin-bottom: 20px; }
+.search { width: 90%; max-width: 400px; padding: 12px; border-radius: 25px; border: none; font-size: 16px; text-align: center; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 450px; margin: 25px auto; }
+.card { background: #1a1a1a; border: 1px solid #333; border-radius: 15px; padding: 20px 10px; cursor: pointer; }
+.card:hover { border-color: #FFD700; }
+.emoji { font-size: 28px; }
+.card h3 { color: #FFD700; font-size: 16px; margin: 8px 0 4px; }
+.card p { color: #aaa; font-size: 12px; margin: 0; }
+.btn { background: #FFD700; color: black; border: none; padding: 12px 30px; border-radius: 25px; font-weight: bold; font-size: 16px; margin-top: 10px; }
+.footer { color: #666; font-size: 12px; margin-top: 30px; }
+</style>
 </head>
-<body><script>
-  function sayHello() {
-    alert("Welcome Franklin! You are now a developer!");
-  }
-</script>
-  <h1>Hello, my name is Franklin</h1>
-  <p>I am learning to become a software engineer.</p>
-  <p>I will build Glintbase before September 2027.</p>
-    <button onclick="sayHello()">Click Me</button>
+<body>
 
-  <script>
-    function sayHello() {
-      alert("Welcome Franklin! You are now a developer!");
-    }
-  </script>
-</body>
-</html>
+<div class="logo">⚡ BLINKBASE</div>
+<p class="tagline">One platform. All your tools. Get things done faster.</p>
+
+<input class="search" id="searchBox" placeholder="Wetin you wan do today? e.g. write essay...">
+
+<div class="grid">
+  <div class="card" onclick="openTool('Write Helper')">
+    <div class="emoji">✍️</div><h3>Write Helper</h3><p>Essays, emails, captions</p>
+  </div>
+  <div class="card" onclick="openTool('Study Helper')">
+    <div class="emoji">📚</div><h3>Study Helper</h3><p>Summarize, explain, quiz</p>
+  </div>
+  <div class="card" onclick="openTool('Business Ideas')">
+    <div class="emoji">💼</div><h3>Business</h3><p>Ideas, plans, pricing</p>
+  </div>
+  <div class="card" onclick="openTool('Daily Planner')">
+    <div class="emoji">📅</div><h3>Planner</h3><p>Plan your day in 1 min</p>
+  </div>
+  <div class="card" onclick="openTool('Creator Studio')">
+    <div class="emoji">🎨</div><h3>Creator Studio</h3><p>Content ideas & scripts</p>
+  </div>
+  <div class="card" onclick="openTool('Translate')">
+    <div class="emoji">🌍</div><h3>Translate</h3><p>English, Pidgin & more</p>
+  </div>
+</div>
+
+<button class="btn" onclick="startNow()">Start Working →</button>
+
+<p class="footer">Built by Franklin • Blinkbase © 2026<br>For students, creators & business owners</p>
+
+<script>
+function openTool(tool) {
+  alert(tool + " is coming soon!\n\nBlinkbase go help you with " + tool + " very soon. Stay tuned!");
+}
+function startNow() {
+  let q = document.getElementById('searchBox').value;
+  if(q == "") {
+    alert("Welcome to Blinkbase! ⚡\n\nType wetin you wan do for the search box above.");
+  } else {
+    alert("You wan do: " + q + "\n\nBlinkbase AI dey work on am for you... Coming soon!");
+  }
+}
+</script>
+
 </body>
 </html>
