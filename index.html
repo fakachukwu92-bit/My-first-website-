@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +9,7 @@ body{font-family:Arial;background:#08080F;color:#fff;margin:0;padding:0}
 header{background:#0B0B0F;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #222;position:sticky;top:0;z-index:10}
 .logo{display:flex;align-items:center;gap:8px;cursor:pointer}
 .logoIcon{width:36px;height:36px;background:linear-gradient(135deg,#FFD700,#A855F7);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px}
-.logoText{font-size:20px;font-weight:900;letter-spacing:-0.5px}
+.logoText{font-size:20px;font-weight:900}
 .logoText span{background:linear-gradient(90deg,#FFD700,#A855F7);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .nav{font-size:13px;display:flex;gap:14px;align-items:center}
 .nav b{color:#FFD700;cursor:pointer}
@@ -29,11 +28,11 @@ header{background:#0B0B0F;padding:14px 20px;display:flex;justify-content:space-b
 .search{width:100%;padding:14px;border-radius:999px;border:1px solid #2A2A35;background:#15151C;color:#fff;font-size:15px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
 .card{background:#15151C;border:1px solid #23232E;border-radius:20px;padding:20px 14px;cursor:pointer}
-.card:active{transform:scale(0.97)}
+.card:active{transform:scale(0.96);background:#222}
 .card h3{font-size:15px;margin:10px 0 4px}
 .card p{font-size:12px;color:#999;margin:0;line-height:1.4}
-.card.hot{border-color:#FFD700;background:linear-gradient(135deg,#1A1700,#15151C)}
-.card.ai{border-color:#A855F7;background:linear-gradient(135deg,#1E0A2E,#15151C)}
+.card.hot{border-color:#FFD700}
+.card.ai{border-color:#A855F7;background:#1E0A2E}
 .premium{background:linear-gradient(135deg,#FFD700,#FF8A00,#A855F7);color:#000;border-radius:20px;padding:16px;margin-top:16px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
 .premium b{background:#000;color:#FFD700;padding:8px 14px;border-radius:999px;font-size:12px}
 .box{max-width:480px;margin:16px auto;background:#15151C;padding:22px;border-radius:22px;border:1px solid #26262F}
@@ -56,11 +55,11 @@ textarea{height:90px}
 </head>
 <body>
 
-<div class="topbar">🔥 NEW: Blink AI don land! Ask am anything 👇</div>
+<div class="topbar">🔥 NEW: Blink AI don land! Tap any card below 👇</div>
 
 <header>
-<div class="logo" data-go="home"><div class="logoIcon">⚡</div><div class="logoText">BLINK<span>BASE</span></div></div>
-<div class="nav"><span data-go="home">Home</span><span data-go="ai">AI</span><b data-go="premium">👑 Pro</b></div>
+<div class="logo" onclick="goPage('home')"><div class="logoIcon">⚡</div><div class="logoText">BLINK<span>BASE</span></div></div>
+<div class="nav"><span onclick="goPage('home')">Home</span><span onclick="goPage('ai')">AI</span><b onclick="goPage('premium')">👑 Pro</b></div>
 </header>
 
 <div id="page-home">
@@ -69,98 +68,80 @@ textarea{height:90px}
 <h1>One App.<br>All Your <em>Tools + AI.</em></h1>
 <p>Write, study, plan, create, translate, make CV, solve maths, chat with AI & play games.</p>
 <div style="margin-top:18px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-<button class="btnY" data-go="ai">🤖 Try Blink AI →</button>
-<button class="btnG" data-go="quiz">🎮 Play Quiz</button>
+<button class="btnY" onclick="goPage('ai')">🤖 Try Blink AI →</button>
+<button class="btnG" onclick="goPage('quiz')">🎮 Play Quiz</button>
 </div>
-<div style="margin-top:14px;background:#15151C;border:1px solid #A855F7;border-radius:14px;padding:12px;display:inline-block;font-size:13px">🔥 Your Streak: <b style="color:#FFD700" id="streakText">1 Day</b> • Keep am going!</div>
+<div style="margin-top:14px;background:#15151C;border:1px solid #A855F7;border-radius:14px;padding:12px;display:inline-block;font-size:13px">🔥 V11 FIX: Tap any card, e MUST open now!</div>
 </div>
 <div class="stats"><div class="stat"><b>14+</b><span>Tools & AI</span></div><div class="stat"><b>100%</b><span>Free to Start</span></div><div class="stat"><b>⚡</b><span>Works on Phone</span></div></div>
 <div class="container">
-<div class="premium" data-go="premium"><div><h3 style="margin:0">👑 Blinkbase Premium</h3><p style="margin:4px 0 0;font-size:12px">Unlock everything for just ₦500/month</p></div><b>Go Pro →</b></div>
+<div class="premium" onclick="goPage('premium')"><div><h3 style="margin:0">👑 Blinkbase Premium</h3><p style="margin:4px 0 0;font-size:12px">Unlock everything for just ₦500/month</p></div><b>Go Pro →</b></div>
 <br>
-<input class="search" id="searchBox" placeholder="🔍 Search: ai, quiz, cv, maths, write...">
+<input class="search" placeholder="🔍 Search: ai, quiz, cv, maths, write...">
 <h3>🤖 AI Power</h3>
 <div class="grid">
-<div class="card ai" data-go="ai"><div style="font-size:26px">🤖</div><h3>Blink AI Chat</h3><p>Ask anything. Get smart answers. NEW!</p></div>
-<div class="card" data-go="write"><div style="font-size:26px">✍️</div><h3>Write Helper</h3><p>Essays, emails & captions</p></div>
+<div class="card ai" onclick="goPage('ai')"><div style="font-size:26px">🤖</div><h3>Blink AI Chat</h3><p>Ask anything. Get smart answers. NEW!</p></div>
+<div class="card" onclick="goPage('write')"><div style="font-size:26px">✍️</div><h3>Write Helper</h3><p>Essays, emails & captions</p></div>
 </div>
 <h3>🛠️ Productivity Tools</h3>
 <div class="grid">
-<div class="card" data-go="study"><div style="font-size:24px">📚</div><h3>Study Helper</h3><p>Summarize long notes fast</p></div>
-<div class="card" data-go="business"><div style="font-size:24px">💼</div><h3>Business</h3><p>Business plans & pricing</p></div>
-<div class="card" data-go="planner"><div style="font-size:24px">📅</div><h3>Planner</h3><p>Plan your perfect day</p></div>
-<div class="card" data-go="creator"><div style="font-size:24px">🎨</div><h3>Creator Studio</h3><p>Viral content ideas</p></div>
-<div class="card" data-go="translate"><div style="font-size:24px">🌍</div><h3>Translate</h3><p>English ↔ Pidgin</p></div>
-<div class="card" data-go="motiv"><div style="font-size:24px">🔥</div><h3>Motivation</h3><p>Daily push for you</p></div>
+<div class="card" onclick="goPage('study')"><div style="font-size:24px">📚</div><h3>Study Helper</h3><p>Summarize long notes fast</p></div>
+<div class="card" onclick="goPage('business')"><div style="font-size:24px">💼</div><h3>Business</h3><p>Business plans & pricing</p></div>
+<div class="card" onclick="goPage('planner')"><div style="font-size:24px">📅</div><h3>Planner</h3><p>Plan your perfect day</p></div>
+<div class="card" onclick="goPage('creator')"><div style="font-size:24px">🎨</div><h3>Creator Studio</h3><p>Viral content ideas</p></div>
+<div class="card" onclick="goPage('translate')"><div style="font-size:24px">🌍</div><h3>Translate</h3><p>English ↔ Pidgin</p></div>
+<div class="card" onclick="goPage('motiv')"><div style="font-size:24px">🔥</div><h3>Motivation</h3><p>Daily push for you</p></div>
 </div>
 <h3>🎮 Games & Fun</h3>
 <div class="grid">
-<div class="card hot" data-go="quiz"><div style="font-size:24px">⏱️</div><h3>Quiz Battle HARD</h3><p>10 seconds per question</p></div>
-<div class="card hot" data-go="guess"><div style="font-size:24px">🔢</div><h3>Number Guess</h3><p>1 to 100. Only 4 tries.</p></div>
+<div class="card hot" onclick="goPage('quiz')"><div style="font-size:24px">⏱️</div><h3>Quiz Battle HARD</h3><p>10 seconds per question</p></div>
+<div class="card hot" onclick="goPage('guess')"><div style="font-size:24px">🔢</div><h3>Number Guess</h3><p>1 to 100. Only 4 tries.</p></div>
 </div>
 <h3>💼 Career & Money</h3>
 <div class="grid">
-<div class="card" data-go="cv"><div style="font-size:24px">📄</div><h3>CV Maker</h3><p>Professional CV in 1 min</p></div>
-<div class="card" data-go="maths"><div style="font-size:24px">🧮</div><h3>Maths Solver</h3><p>Solve any calculation</p></div>
-<div class="card" data-go="expense"><div style="font-size:24px">💸</div><h3>Expense Tracker</h3><p>Know where money goes</p></div>
-<div class="card" data-go="premium"><div style="font-size:24px">👑</div><h3>Premium</h3><p>Unlock all features</p></div>
+<div class="card" onclick="goPage('cv')"><div style="font-size:24px">📄</div><h3>CV Maker</h3><p>Professional CV in 1 min</p></div>
+<div class="card" onclick="goPage('maths')"><div style="font-size:24px">🧮</div><h3>Maths Solver</h3><p>Solve any calculation</p></div>
+<div class="card" onclick="goPage('expense')"><div style="font-size:24px">💸</div><h3>Expense Tracker</h3><p>Know where money goes</p></div>
+<div class="card" onclick="goPage('premium')"><div style="font-size:24px">👑</div><h3>Premium</h3><p>Unlock all features</p></div>
 </div>
 </div>
 </div>
 
-<div id="page-ai" class="box hidden"><h2>🤖 Blink AI</h2><p style="color:#999;font-size:13px">Your personal AI assistant. Ask am anything!</p><div class="chatBox" id="chatBox"><div class="msg msgAI">Hello! 👋 I be Blink AI. Ask me anything - how to make money, study tips, business idea, motivation, anything! 👇</div></div><div><span class="chip" data-q="How to make money as a student?">💰 Make money</span><span class="chip" data-q="Motivate me">🔥 Motivate me</span><span class="chip" data-q="Help me study better">📚 Study tips</span><span class="chip" data-q="Give me a business idea">💼 Business idea</span></div><input id="aiInput" placeholder="Ask Blink AI anything..."><button class="btn" id="btnAI">Send →</button><br><button class="btn2" data-go="home">← Back Home</button></div>
+<div id="page-ai" class="box hidden"><h2>🤖 Blink AI</h2><p style="color:#999;font-size:13px">Your personal AI assistant. Ask am anything!</p><div class="chatBox" id="chatBox"><div class="msg msgAI">Hello! 👋 I be Blink AI. Ask me anything - how to make money, study tips, business idea, motivation, anything! 👇</div></div><div><span class="chip" onclick="askQuick('How to make money as a student?')">💰 Make money</span><span class="chip" onclick="askQuick('Motivate me')">🔥 Motivate me</span><span class="chip" onclick="askQuick('Help me study better')">📚 Study tips</span><span class="chip" onclick="askQuick('Give me a business idea')">💼 Business idea</span></div><input id="aiInput" placeholder="Ask Blink AI anything..."><button class="btn" onclick="askAI()">Send →</button><br><button class="btn2" onclick="goPage('home')">← Back Home</button></div>
 
-<div id="page-motiv" class="box hidden"><h2>🔥 Daily Motivation</h2><p style="color:#999">Tap to get your push for today!</p><button class="btn" id="btnMotiv">Give Me Motivation 🔥</button><div id="motivResult" class="result"></div><br><button class="btn2" data-go="home">← Back</button></div>
+<div id="page-motiv" class="box hidden"><h2>🔥 Daily Motivation</h2><button class="btn" onclick="doMotiv()">Give Me Motivation 🔥</button><div id="motivResult" class="result"></div><br><button class="btn2" onclick="goPage('home')">← Back</button></div>
 
-<div id="page-write" class="box hidden"><h2>✍️ Write Helper</h2><input id="writeTopic" placeholder="e.g. My dream"><select id="writeType"><option>Essay</option><option>Email</option><option>Instagram Caption</option></select><button class="btn" id="btnWrite">Generate →</button><div id="writeResult" class="result"></div><button class="copyBtn" data-copy="writeResult">📋 Copy</button><br><button class="btn2" data-go="home">← Back Home</button></div>
-<div id="page-study" class="box hidden"><h2>📚 Study Helper</h2><textarea id="studyInput" placeholder="Paste note here..."></textarea><button class="btn" id="btnStudy">Summarize →</button><div id="studyResult" class="result"></div><button class="copyBtn" data-copy="studyResult">📋 Copy</button><br><button class="btn2" data-go="home">← Back</button></div>
-<div id="page-business" class="box hidden"><h2>💼 Business Helper</h2><input id="bizInput" placeholder="e.g. selling clothes"><button class="btn" id="btnBiz">Generate Plan →</button><div id="bizResult" class="result"></div><button class="copyBtn" data-copy="bizResult">📋 Copy</button><br><button class="btn2" data-go="home">← Back</button></div>
-<div id="page-planner" class="box hidden"><h2>📅 Planner</h2><input id="planInput" placeholder="e.g. study, gym, code"><button class="btn" id="btnPlan">Plan My Day →</button><div id="planResult" class="result"></div><button class="copyBtn" data-copy="planResult">📋 Copy</button><br><button class="btn2" data-go="home">← Back</button></div>
-<div id="page-creator" class="box hidden"><h2>🎨 Creator Studio</h2><input id="creatorInput" placeholder="e.g. how I built Blinkbase"><button class="btn" id="btnCreator">Generate →</button><div id="creatorResult" class="result"></div><button class="copyBtn" data-copy="creatorResult">📋 Copy</button><br><button class="btn2" data-go="home">← Back</button></div>
-<div id="page-translate" class="box hidden"><h2>🌍 Translate</h2><input id="transInput" placeholder="e.g. How are you?"><select id="transTo"><option>Pidgin</option><option>English</option></select><button class="btn" id="btnTrans">Translate →</button><div id="transResult" class="result"></div><button class="copyBtn" data-copy="transResult">📋 Copy</button><br><button class="btn2" data-go="home">← Back</button></div>
+<div id="page-write" class="box hidden"><h2>✍️ Write Helper</h2><input id="writeTopic" placeholder="e.g. My dream"><select id="writeType"><option>Essay</option><option>Email</option><option>Instagram Caption</option></select><button class="btn" onclick="doWrite()">Generate →</button><div id="writeResult" class="result"></div><button class="copyBtn" onclick="doCopy('writeResult')">📋 Copy</button><br><button class="btn2" onclick="goPage('home')">← Back Home</button></div>
+<div id="page-study" class="box hidden"><h2>📚 Study Helper</h2><textarea id="studyInput" placeholder="Paste note here..."></textarea><button class="btn" onclick="doStudy()">Summarize →</button><div id="studyResult" class="result"></div><button class="copyBtn" onclick="doCopy('studyResult')">📋 Copy</button><br><button class="btn2" onclick="goPage('home')">← Back</button></div>
+<div id="page-business" class="box hidden"><h2>💼 Business Helper</h2><input id="bizInput" placeholder="e.g. selling clothes"><button class="btn" onclick="doBiz()">Generate Plan →</button><div id="bizResult" class="result"></div><button class="copyBtn" onclick="doCopy('bizResult')">📋 Copy</button><br><button class="btn2" onclick="goPage('home')">← Back</button></div>
+<div id="page-planner" class="box hidden"><h2>📅 Planner</h2><input id="planInput" placeholder="e.g. study, gym, code"><button class="btn" onclick="doPlan()">Plan My Day →</button><div id="planResult" class="result"></div><button class="copyBtn" onclick="doCopy('planResult')">📋 Copy</button><br><button class="btn2" onclick="goPage('home')">← Back</button></div>
+<div id="page-creator" class="box hidden"><h2>🎨 Creator Studio</h2><input id="creatorInput" placeholder="e.g. how I built Blinkbase"><button class="btn" onclick="doCreator()">Generate →</button><div id="creatorResult" class="result"></div><button class="copyBtn" onclick="doCopy('creatorResult')">📋 Copy</button><br><button class="btn2" onclick="goPage('home')">← Back</button></div>
+<div id="page-translate" class="box hidden"><h2>🌍 Translate</h2><input id="transInput" placeholder="e.g. How are you?"><select id="transTo"><option>Pidgin</option><option>English</option></select><button class="btn" onclick="doTrans()">Translate →</button><div id="transResult" class="result"></div><button class="copyBtn" onclick="doCopy('transResult')">📋 Copy</button><br><button class="btn2" onclick="goPage('home')">← Back</button></div>
 
-<div id="page-quiz" class="box hidden"><h2>⏱️ Quiz Battle HARD</h2><p style="color:#999;font-size:13px">10 hard questions. 10 seconds each.</p><div id="quizStart"><input id="playerName" placeholder="Your name"><button class="btn" id="btnQuiz">Start Battle →</button><p>Best: <span id="bestScore">0/10</span></p></div><div id="quizPlay" class="hidden"><p class="timer" id="timer">⏱️ 10s</p><p id="quizQ" style="font-weight:700"></p><div id="quizOpts"></div><p id="quizProgress" style="color:#FFD700;font-size:13px"></p></div><div id="quizEnd" class="hidden"><h3 id="quizScore" style="color:#FFD700"></h3><p id="quizMsg"></p><button class="btn" id="btnShare">Share for WhatsApp 📲</button><br><button class="btn2" id="btnQuizAgain">Play Again 🔁</button></div><button class="btn2" data-go="home">← Back</button></div>
+<div id="page-quiz" class="box hidden"><h2>⏱️ Quiz Battle HARD</h2><p style="color:#999;font-size:13px">10 hard questions. 10 seconds each.</p><div id="quizStart"><input id="playerName" placeholder="Your name"><button class="btn" onclick="startQuiz()">Start Battle →</button></div><div id="quizPlay" class="hidden"><p class="timer" id="timer">⏱️ 10s</p><p id="quizQ" style="font-weight:700"></p><div id="quizOpts"></div><p id="quizProgress" style="color:#FFD700;font-size:13px"></p></div><div id="quizEnd" class="hidden"><h3 id="quizScore" style="color:#FFD700"></h3><p id="quizMsg"></p><button class="btn" onclick="shareQuiz()">Share for WhatsApp 📲</button><br><button class="btn2" onclick="startQuiz()">Play Again 🔁</button></div><button class="btn2" onclick="goPage('home')">← Back</button></div>
 
-<div id="page-guess" class="box hidden"><h2>🔢 Number Guess HARD</h2><p style="color:#999">1 to 100. Only 4 tries!</p><input id="guessInput" type="number" placeholder="Type 1-100"><button class="btn" id="btnGuess">Guess →</button><div id="guessResult" class="result"></div><button class="btn2" id="btnGuessReset">New Game 🔁</button><br><button class="btn2" data-go="home">← Back</button></div>
+<div id="page-guess" class="box hidden"><h2>🔢 Number Guess HARD</h2><p style="color:#999">1 to 100. Only 4 tries!</p><input id="guessInput" type="number" placeholder="Type 1-100"><button class="btn" onclick="doGuess()">Guess →</button><div id="guessResult" class="result"></div><button class="btn2" onclick="resetGuess()">New Game 🔁</button><br><button class="btn2" onclick="goPage('home')">← Back</button></div>
 
-<div id="page-cv" class="box hidden"><h2>📄 CV Maker</h2><input id="cvName" placeholder="Full name"><input id="cvJob" placeholder="Job you wan"><input id="cvSkills" placeholder="Skills, comma"><button class="btn" id="btnCV">Generate CV →</button><div id="cvResult" class="result"></div><button class="copyBtn" data-copy="cvResult">📋 Copy CV</button><br><button class="btn2" data-go="home">← Back</button></div>
-<div id="page-maths" class="box hidden"><h2>🧮 Maths Solver</h2><input id="mathInput" placeholder="e.g. 25*4+10"><button class="btn" id="btnMaths">Solve →</button><div id="mathResult" class="result"></div><button class="copyBtn" data-copy="mathResult">📋 Copy</button><br><button class="btn2" data-go="home">← Back</button></div>
-<div id="page-expense" class="box hidden"><h2>💸 Expense Tracker</h2><input id="expIncome" type="number" placeholder="Income e.g. 50000"><input id="expList" placeholder="e.g. food:15000, transport:5000"><button class="btn" id="btnExpense">Calculate →</button><div id="expResult" class="result"></div><button class="copyBtn" data-copy="expResult">📋 Copy</button><br><button class="btn2" data-go="home">← Back</button></div>
-<div id="page-premium" class="box hidden"><h2>👑 Blinkbase Premium</h2><p style="color:#999">₦500/month - Unlimited tools, Priority support, Early access to Blink AI Pro.</p><button class="btn" id="btnPremium">Chat Franklin to Pay →</button><br><button class="btn2" data-go="home">← Back</button></div>
+<div id="page-cv" class="box hidden"><h2>📄 CV Maker</h2><input id="cvName" placeholder="Full name"><input id="cvJob" placeholder="Job you wan"><input id="cvSkills" placeholder="Skills, comma"><button class="btn" onclick="doCV()">Generate CV →</button><div id="cvResult" class="result"></div><button class="copyBtn" onclick="doCopy('cvResult')">📋 Copy CV</button><br><button class="btn2" onclick="goPage('home')">← Back</button></div>
+<div id="page-maths" class="box hidden"><h2>🧮 Maths Solver</h2><input id="mathInput" placeholder="e.g. 25*4+10"><button class="btn" onclick="doMaths()">Solve →</button><div id="mathResult" class="result"></div><button class="copyBtn" onclick="doCopy('mathResult')">📋 Copy</button><br><button class="btn2" onclick="goPage('home')">← Back</button></div>
+<div id="page-expense" class="box hidden"><h2>💸 Expense Tracker</h2><input id="expIncome" type="number" placeholder="Income e.g. 50000"><input id="expList" placeholder="e.g. food:15000, transport:5000"><button class="btn" onclick="doExpense()">Calculate →</button><div id="expResult" class="result"></div><button class="copyBtn" onclick="doCopy('expResult')">📋 Copy</button><br><button class="btn2" onclick="goPage('home')">← Back</button></div>
+<div id="page-premium" class="box hidden"><h2>👑 Blinkbase Premium</h2><p style="color:#999">₦500/month - Unlimited tools, Priority support, Early access to Blink AI Pro.</p><button class="btn" onclick="doPremium()">Chat Franklin to Pay →</button><br><button class="btn2" onclick="goPage('home')">← Back</button></div>
 
 <div class="footer">⚡ <b style="color:#FFD700">BLINKBASE</b><br>Built by Franklin • Lagos • © 2026<br>One App. All Your Tools + AI.</div>
 
 <script>
-var Q=[
-{q:"If 5x = 35, wetin be x?",o:["5","6","7","8"],a:2},
-{q:"Next number? 2, 6, 12, 20, ?",o:["28","30","32","26"],a:1},
-{q:"A man get 3 sons, each son get 1 sister. How many children?",o:["3","4","5","6"],a:1},
-{q:"Buy for N800 sell for N1000, profit %?",o:["20%","25%","30%","15%"],a:1},
-{q:"Wetin be 15% of 400?",o:["40","50","60","70"],a:2},
-{q:"Train go 60km in 1hr, how far in 2.5hrs?",o:["120km","150km","180km","100km"],a:1},
-{q:"Which word no match? Apple, Mango, Banana, Carrot",o:["Apple","Mango","Banana","Carrot"],a:3},
-{q:"I speak without mouth, hear without ears. Wetin I be?",o:["Echo","Wind","Phone","Shadow"],a:0},
-{q:"5 people shake hands once each, how many shakes?",o:["5","8","10","15"],a:2},
-{q:"Square root of 144?",o:["11","12","13","14"],a:1}
-];
-var qi=0,score=0,player="Player",secret=Math.floor(Math.random()*100)+1,tries=0,timerInt=null,timeLeft=10;
+var Q=[{q:"If 5x = 35, wetin be x?",o:["5","6","7","8"],a:2},{q:"Next number? 2, 6, 12, 20, ?",o:["28","30","32","26"],a:1},{q:"A man get 3 sons, each son get 1 sister. How many children?",o:["3","4","5","6"],a:1},{q:"Buy for N800 sell for N1000, profit %?",o:["20%","25%","30%","15%"],a:1},{q:"Wetin be 15% of 400?",o:["40","50","60","70"],a:2},{q:"Train go 60km in 1hr, how far in 2.5hrs?",o:["120km","150km","180km","100km"],a:1},{q:"Which word no match? Apple, Mango, Banana, Carrot",o:["Apple","Mango","Banana","Carrot"],a:3},{q:"I speak without mouth, hear without ears. Wetin I be?",o:["Echo","Wind","Phone","Shadow"],a:0},{q:"5 people shake hands once each, how many shakes?",o:["5","8","10","15"],a:2},{q:"Square root of 144?",o:["11","12","13","14"],a:1}];
+var qi=0,score=0,player="Player",secret=50,tries=0,timerInt=null,timeLeft=10;
+secret=Math.floor(Math.random()*100)+1;
 var pages=["home","ai","motiv","write","study","business","planner","creator","translate","quiz","guess","cv","maths","expense","premium"];
 function hideAll(){for(var i=0;i<pages.length;i++){var el=document.getElementById("page-"+pages[i]);if(el)el.classList.add("hidden");}}
 function goPage(n){if(timerInt)clearInterval(timerInt);hideAll();var el=document.getElementById("page-"+n);if(el)el.classList.remove("hidden");window.scrollTo(0,0);if(n==="quiz"){document.getElementById("quizStart").classList.remove("hidden");document.getElementById("quizPlay").classList.add("hidden");document.getElementById("quizEnd").classList.add("hidden");}}
 function showR(id,txt){var r=document.getElementById(id);r.style.display="block";r.innerText=txt;}
-document.addEventListener("click",function(e){
-var t=e.target;while(t && !t.getAttribute("data-go") && !t.getAttribute("data-copy") && !t.getAttribute("data-q")){t=t.parentElement;}if(!t)return;
-if(t.getAttribute("data-go")){goPage(t.getAttribute("data-go"));}
-if(t.getAttribute("data-copy")){var txt=document.getElementById(t.getAttribute("data-copy")).innerText;if(!txt){alert("Generate first!");return;}navigator.clipboard.writeText(txt).then(function(){alert("Copied!");});}
-if(t.getAttribute("data-q")){document.getElementById("aiInput").value=t.getAttribute("data-q");askAI();}
-});
-function setup(id,fn){var b=document.getElementById(id);if(b)b.onclick=fn;}
+function doCopy(id){var txt=document.getElementById(id).innerText;if(!txt){alert("Generate first!");return;}navigator.clipboard.writeText(txt).then(function(){alert("Copied!");});}
 function addMsg(txt,who){var box=document.getElementById("chatBox");var d=document.createElement("div");d.className="msg "+(who==="user"?"msgUser":"msgAI");d.innerText=txt;box.appendChild(d);box.scrollTop=box.scrollHeight;}
-function getAIReply(q){
-q=q.toLowerCase();
-if(q.indexOf("money")>=0||q.indexOf("make")>=0&&q.indexOf("money")>=0)return "💰 HOW TO MAKE MONEY AS STUDENT:\n\n1. Sell something for WhatsApp - data, thrift clothes, snacks\n2. Learn one skill - design, video editing, coding like Franklin did with Blinkbase\n3. Offer service - help people do CV, assignments, social media\n\nStart with N0: Tell 5 people today wetin you fit do for them. No wait for perfect time!";
-if(q.indexOf("motivat")>=0)return "🔥 LISTEN:\n\nNobody go come save you. Your future na your hand. You don already start - you dey use Blinkbase, you dey learn. That alone put you ahead of 90% of people wey dey just scroll TikTok.\n\nDo 1 small thing today. Just 1. Then tomorrow do another 1. Na so success dey build.";
-if(q.indexOf("study")>=0||q.indexOf("exam")>=0)return "📚 STUDY TIPS WEY DEY WORK:\n\n1. Study 25 mins, rest 5 mins - no marathon\n2. Teach someone wetin you learn - if you fit teach am, you sabi am\n3. Use Blinkbase Study Helper to summarize your notes\n4. Sleep well before exam, cramming for night no dey help";
-if(q.indexOf("business")>=0||q.indexOf("idea")>=0)return "💼 BUSINESS IDEAS FOR YOU:\n\n1. Mini importation - buy cheap for AliExpress, sell for WhatsApp\n2. Content creation - document your journey like Blinkbase story\n3. Tutorial service - teach JAMB, WAEC students online\n4. Food business - small chops, snacks for your area\n\nPick 1, start small this week. No overthink!";
-if(q.indexOf("hello")>=0||q.indexOf("hi")>=0||q.indexOf("how are you")>=0)return "Hello! 👋 I dey fine, I dey here for you! Ask me about money, business, study, motivation, or anything. Wetin you wan achieve today?";
-if(q.indexOf("love")>=0||q.indexOf("girlfriend")>=0||q.indexOf("boyfriend")>=0)return "😅 Love matter... My advice: Focus on building yourself first. When you dey grow, the right person
+function getAIReply(q){q=q.toLowerCase();if(q.indexOf("money")>=0)return "💰 HOW TO MAKE MONEY AS STUDENT:\n\n1. Sell something for WhatsApp - data, thrift clothes, snacks\n2. Learn one skill - design, video editing, coding like Franklin did with Blinkbase\n3. Offer service - help people do CV, assignments, social media\n\nStart with N0: Tell 5 people today wetin you fit do for them!";if(q.indexOf("motivat")>=0)return "🔥 LISTEN:\n\nNobody go come save you. Your future na your hand. You don already start - you dey use Blinkbase, you dey learn. That alone put you ahead of 90% of people wey dey just scroll TikTok.\n\nDo 1 small thing today. Just 1.";if(q.indexOf("study")>=0||q.indexOf("exam")>=0)return "📚 STUDY TIPS:\n\n1. Study 25 mins, rest 5 mins\n2. Teach someone wetin you learn\n3. Use Blinkbase Study Helper to summarize your notes\n4. Sleep well before exam";if(q.indexOf("business")>=0||q.indexOf("idea")>=0)return "💼 BUSINESS IDEAS:\n\n1. Mini importation - buy cheap, sell for WhatsApp\n2. Content creation - document your journey\n3. Tutorial service - teach JAMB, WAEC students\n4. Food business - small chops\n\nPick 1, start small this week!";if(q.indexOf("hello")>=0||q.indexOf("hi")>=0)return "Hello! 👋 I dey fine! Ask me about money, business, study, motivation, or anything. Wetin you wan achieve today?";if(q.indexOf("joke")>=0)return "😂 Why did the phone go to school? Because e wan be SMART phone!";return "Good question! 🤔\n\nBreak am into small steps. Start with the smallest step you fit do TODAY.\n\nIf na money: tell 1 person wetin you dey sell.\nIf na study: read 1 topic for 25 mins.\n\nSmall steps every day = big result. You fit do am! 💪"; }
+function askAI(){var inp=document.getElementById("aiInput");var q=inp.value.trim();if(!q)return;addMsg(q,"user");inp.value="";setTimeout(function(){addMsg(getAIReply(q),"ai");},500);}
+function askQuick(q){document.getElementById("aiInput").value=q;askAI();}
+function doMotiv(){var m=["🔥 You no need motivation, you need discipline. Do am even when you no feel like am.","💪 Your mates dey sleep. You dey build. That na the difference.","⚡ 1 year from now, you go wish say you start today. So start now.","👑 No be luck. Na consistency. Keep showing up.","🚀 Franklin build Blinkbase with just phone. Wetin be your excuse? Go build your own!"];showR("motivResult",m[Math.floor(Math.random()*m.length)]);}
+function doWrite(){var topic=document.getElementById("writeTopic").value||"My Dream";var type=document.getElementById("writeType").value;var out="";if(type==="Essay")out="ESSAY: "+topic+"\n\nIntroduction:\n"+topic+" is very important today.\n\nBody:\nFirst, it helps us understand ourselves. Second, it teaches discipline. Third, it opens new opportunities.\n\nConclusion:\n"+topic+" is a journey. Keep pushing!";else if(type==="Email")out="Subject: Regarding "+topic+"\n\nHello,\n\nI am writing about "+topic+".\n\nBest regards,\nFranklin";else out="✨ "+topic+" ✨\n\nNo be luck. Na focus + consistency.\n#Blinkbase";showR("writeResult",out);}
+function doStudy(){var text=document.getElementByI
