@@ -1,21 +1,26 @@
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Blinkbase - Your All-in-One Super App</title>
 <style>
-body{font-family:Arial;background:#0B0B0F;color:#fff;margin:0;padding:0}
-header{background:#0B0B0F;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #222;position:sticky;top:0}
-.logo{font-size:22px;font-weight:900;cursor:pointer}
-.logo span{color:#FFD700}
-.nav{font-size:13px;display:flex;gap:14px}
+body{font-family:Arial;background:#08080F;color:#fff;margin:0;padding:0}
+.topbar{background:linear-gradient(90deg,#FFD700,#FF8A00,#A855F7);color:#000;text-align:center;padding:8px;font-size:12px;font-weight:800}
+header{background:#0B0B0F;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #222;position:sticky;top:0;z-index:10}
+.logo{display:flex;align-items:center;gap:8px;cursor:pointer}
+.logoIcon{width:36px;height:36px;background:linear-gradient(135deg,#FFD700,#A855F7);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px}
+.logoText{font-size:20px;font-weight:900;letter-spacing:-0.5px}
+.logoText span{background:linear-gradient(90deg,#FFD700,#A855F7);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav{font-size:13px;display:flex;gap:14px;align-items:center}
 .nav b{color:#FFD700;cursor:pointer}
-.hero{padding:30px 20px 10px;text-align:center}
-.hero h1{font-size:34px;line-height:1.1;margin:14px 0 10px}
-.hero h1 em{color:#FFD700;font-style:normal}
-.hero p{color:#aaa;font-size:15px}
-.btnY{background:#FFD700;color:#000;border:none;padding:13px 24px;border-radius:999px;font-weight:800;font-size:15px;cursor:pointer}
-.btnG{background:transparent;color:#fff;border:1px solid #333;padding:13px 24px;border-radius:999px;font-weight:700;cursor:pointer}
+.hero{padding:32px 20px 10px;text-align:center}
+.heroBadge{background:#1E1E26;border:1px solid #A855F7;padding:6px 14px;border-radius:999px;font-size:12px;color:#FFD700;display:inline-block}
+.hero h1{font-size:36px;line-height:1.1;margin:16px 0 10px}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,#FFD700,#A855F7,#FF8A00);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:#aaa;font-size:15px;line-height:1.6}
+.btnY{background:linear-gradient(90deg,#FFD700,#FF8A00);color:#000;border:none;padding:14px 26px;border-radius:999px;font-weight:900;font-size:15px;cursor:pointer}
+.btnG{background:transparent;color:#fff;border:1px solid #444;padding:14px 26px;border-radius:999px;font-weight:700;cursor:pointer}
 .stats{display:flex;gap:10px;padding:0 18px;margin:20px 0}
 .stat{flex:1;background:#15151C;border:1px solid #222;border-radius:16px;padding:14px 6px;text-align:center}
 .stat b{font-size:20px;display:block}
@@ -24,55 +29,69 @@ header{background:#0B0B0F;padding:14px 20px;display:flex;justify-content:space-b
 .search{width:100%;padding:14px;border-radius:999px;border:1px solid #2A2A35;background:#15151C;color:#fff;font-size:15px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
 .card{background:#15151C;border:1px solid #23232E;border-radius:20px;padding:20px 14px;cursor:pointer}
+.card:active{transform:scale(0.97)}
 .card h3{font-size:15px;margin:10px 0 4px}
-.card p{font-size:12px;color:#999;margin:0}
-.card.hot{border-color:#FFD700}
-.premium{background:linear-gradient(135deg,#FFD700,#FF8A00);color:#000;border-radius:20px;padding:16px;margin-top:16px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.card p{font-size:12px;color:#999;margin:0;line-height:1.4}
+.card.hot{border-color:#FFD700;background:linear-gradient(135deg,#1A1700,#15151C)}
+.card.ai{border-color:#A855F7;background:linear-gradient(135deg,#1E0A2E,#15151C)}
+.premium{background:linear-gradient(135deg,#FFD700,#FF8A00,#A855F7);color:#000;border-radius:20px;padding:16px;margin-top:16px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
 .premium b{background:#000;color:#FFD700;padding:8px 14px;border-radius:999px;font-size:12px}
 .box{max-width:480px;margin:16px auto;background:#15151C;padding:22px;border-radius:22px;border:1px solid #26262F}
 input,textarea,select{width:100%;padding:13px;border-radius:12px;border:1px solid #2A2A35;background:#0F0F14;color:#fff;margin:8px 0;font-size:15px}
 textarea{height:90px}
-.btn{width:100%;background:#FFD700;color:#000;border:none;padding:14px;border-radius:999px;font-weight:800;font-size:16px;margin-top:10px;cursor:pointer}
+.btn{width:100%;background:linear-gradient(90deg,#FFD700,#FF8A00);color:#000;border:none;padding:14px;border-radius:999px;font-weight:800;font-size:16px;margin-top:10px;cursor:pointer}
 .btn2{background:transparent;color:#FFD700;border:1px solid #333;padding:10px 20px;border-radius:999px;margin-top:10px;cursor:pointer}
 .copyBtn{background:#FFD700;color:#000;border:none;padding:9px 18px;border-radius:999px;font-weight:700;margin-top:10px;cursor:pointer}
 .result{background:#0B0B0F;border:1px solid #FFD70055;border-radius:14px;padding:16px;margin-top:14px;white-space:pre-wrap;font-size:14px;line-height:1.6;display:none}
-.footer{border-top:1px solid #222;padding:20px;text-align:center;color:#777;font-size:12px}
+.footer{border-top:1px solid #222;padding:20px;text-align:center;color:#777;font-size:12px;line-height:1.7}
 .hidden{display:none!important}
 .opt{background:#0F0F14;border:1px solid #2A2A35;padding:14px;border-radius:12px;margin:8px 0;cursor:pointer}
 .timer{color:#FF5A5A;font-weight:900;font-size:20px;text-align:center}
+.chatBox{background:#0B0B0F;border-radius:14px;padding:14px;height:280px;overflow-y:auto;margin:10px 0}
+.msg{padding:10px 12px;border-radius:14px;margin:6px 0;font-size:14px;line-height:1.5;max-width:85%}
+.msgUser{background:#FFD700;color:#000;margin-left:auto;text-align:right}
+.msgAI{background:#222;color:#fff}
+.chip{background:#222;border:1px solid #444;padding:7px 12px;border-radius:999px;font-size:12px;margin:4px 4px 0 0;display:inline-block;cursor:pointer;color:#FFD700}
 </style>
 </head>
 <body>
 
+<div class="topbar">🔥 NEW: Blink AI don land! Ask am anything 👇</div>
+
 <header>
-<div class="logo" data-go="home">⚡ BLINK<span>BASE</span></div>
-<div class="nav"><span data-go="home">Home</span><span data-go="quiz">Games</span><b data-go="premium">👑 Premium</b></div>
+<div class="logo" data-go="home"><div class="logoIcon">⚡</div><div class="logoText">BLINK<span>BASE</span></div></div>
+<div class="nav"><span data-go="home">Home</span><span data-go="ai">AI</span><b data-go="premium">👑 Pro</b></div>
 </header>
 
 <div id="page-home">
 <div class="hero">
-<div style="background:#1E1E26;border:1px solid #333;padding:6px 14px;border-radius:999px;font-size:12px;color:#FFD700;display:inline-block">✦ TRUSTED BY STUDENTS & CREATORS IN NIGERIA</div>
-<h1>One App.<br>All Your <em>Tools.</em></h1>
-<p>Write, study, plan, create, translate, make CV, solve maths & play games.</p>
-<div style="margin-top:18px;display:flex;gap:10px;justify-content:center">
-<button class="btnY" data-go="quiz">Start Free →</button>
+<div class="heroBadge">✦ TRUSTED BY STUDENTS & CREATORS IN NIGERIA</div>
+<h1>One App.<br>All Your <em>Tools + AI.</em></h1>
+<p>Write, study, plan, create, translate, make CV, solve maths, chat with AI & play games.</p>
+<div style="margin-top:18px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+<button class="btnY" data-go="ai">🤖 Try Blink AI →</button>
 <button class="btnG" data-go="quiz">🎮 Play Quiz</button>
 </div>
-<button onclick="alert('YES! Click dey work now ✅')" style="margin-top:14px;background:#222;color:#FFD700;border:1px solid #FFD700;padding:8px 16px;border-radius:999px">🔧 TEST CLICK - Tap me</button>
+<div style="margin-top:14px;background:#15151C;border:1px solid #A855F7;border-radius:14px;padding:12px;display:inline-block;font-size:13px">🔥 Your Streak: <b style="color:#FFD700" id="streakText">1 Day</b> • Keep am going!</div>
 </div>
-<div class="stats"><div class="stat"><b>12+</b><span>Tools & Games</span></div><div class="stat"><b>100%</b><span>Free to Start</span></div><div class="stat"><b>⚡</b><span>Works on Phone</span></div></div>
+<div class="stats"><div class="stat"><b>14+</b><span>Tools & AI</span></div><div class="stat"><b>100%</b><span>Free to Start</span></div><div class="stat"><b>⚡</b><span>Works on Phone</span></div></div>
 <div class="container">
 <div class="premium" data-go="premium"><div><h3 style="margin:0">👑 Blinkbase Premium</h3><p style="margin:4px 0 0;font-size:12px">Unlock everything for just ₦500/month</p></div><b>Go Pro →</b></div>
 <br>
-<input class="search" id="searchBox" placeholder="🔍 Search: quiz, cv, maths, write...">
+<input class="search" id="searchBox" placeholder="🔍 Search: ai, quiz, cv, maths, write...">
+<h3>🤖 AI Power</h3>
+<div class="grid">
+<div class="card ai" data-go="ai"><div style="font-size:26px">🤖</div><h3>Blink AI Chat</h3><p>Ask anything. Get smart answers. NEW!</p></div>
+<div class="card" data-go="write"><div style="font-size:26px">✍️</div><h3>Write Helper</h3><p>Essays, emails & captions</p></div>
+</div>
 <h3>🛠️ Productivity Tools</h3>
 <div class="grid">
-<div class="card" data-go="write"><div style="font-size:24px">✍️</div><h3>Write Helper</h3><p>Essays, emails & captions</p></div>
 <div class="card" data-go="study"><div style="font-size:24px">📚</div><h3>Study Helper</h3><p>Summarize long notes fast</p></div>
 <div class="card" data-go="business"><div style="font-size:24px">💼</div><h3>Business</h3><p>Business plans & pricing</p></div>
 <div class="card" data-go="planner"><div style="font-size:24px">📅</div><h3>Planner</h3><p>Plan your perfect day</p></div>
 <div class="card" data-go="creator"><div style="font-size:24px">🎨</div><h3>Creator Studio</h3><p>Viral content ideas</p></div>
 <div class="card" data-go="translate"><div style="font-size:24px">🌍</div><h3>Translate</h3><p>English ↔ Pidgin</p></div>
+<div class="card" data-go="motiv"><div style="font-size:24px">🔥</div><h3>Motivation</h3><p>Daily push for you</p></div>
 </div>
 <h3>🎮 Games & Fun</h3>
 <div class="grid">
@@ -89,6 +108,10 @@ textarea{height:90px}
 </div>
 </div>
 
+<div id="page-ai" class="box hidden"><h2>🤖 Blink AI</h2><p style="color:#999;font-size:13px">Your personal AI assistant. Ask am anything!</p><div class="chatBox" id="chatBox"><div class="msg msgAI">Hello! 👋 I be Blink AI. Ask me anything - how to make money, study tips, business idea, motivation, anything! 👇</div></div><div><span class="chip" data-q="How to make money as a student?">💰 Make money</span><span class="chip" data-q="Motivate me">🔥 Motivate me</span><span class="chip" data-q="Help me study better">📚 Study tips</span><span class="chip" data-q="Give me a business idea">💼 Business idea</span></div><input id="aiInput" placeholder="Ask Blink AI anything..."><button class="btn" id="btnAI">Send →</button><br><button class="btn2" data-go="home">← Back Home</button></div>
+
+<div id="page-motiv" class="box hidden"><h2>🔥 Daily Motivation</h2><p style="color:#999">Tap to get your push for today!</p><button class="btn" id="btnMotiv">Give Me Motivation 🔥</button><div id="motivResult" class="result"></div><br><button class="btn2" data-go="home">← Back</button></div>
+
 <div id="page-write" class="box hidden"><h2>✍️ Write Helper</h2><input id="writeTopic" placeholder="e.g. My dream"><select id="writeType"><option>Essay</option><option>Email</option><option>Instagram Caption</option></select><button class="btn" id="btnWrite">Generate →</button><div id="writeResult" class="result"></div><button class="copyBtn" data-copy="writeResult">📋 Copy</button><br><button class="btn2" data-go="home">← Back Home</button></div>
 <div id="page-study" class="box hidden"><h2>📚 Study Helper</h2><textarea id="studyInput" placeholder="Paste note here..."></textarea><button class="btn" id="btnStudy">Summarize →</button><div id="studyResult" class="result"></div><button class="copyBtn" data-copy="studyResult">📋 Copy</button><br><button class="btn2" data-go="home">← Back</button></div>
 <div id="page-business" class="box hidden"><h2>💼 Business Helper</h2><input id="bizInput" placeholder="e.g. selling clothes"><button class="btn" id="btnBiz">Generate Plan →</button><div id="bizResult" class="result"></div><button class="copyBtn" data-copy="bizResult">📋 Copy</button><br><button class="btn2" data-go="home">← Back</button></div>
@@ -103,9 +126,9 @@ textarea{height:90px}
 <div id="page-cv" class="box hidden"><h2>📄 CV Maker</h2><input id="cvName" placeholder="Full name"><input id="cvJob" placeholder="Job you wan"><input id="cvSkills" placeholder="Skills, comma"><button class="btn" id="btnCV">Generate CV →</button><div id="cvResult" class="result"></div><button class="copyBtn" data-copy="cvResult">📋 Copy CV</button><br><button class="btn2" data-go="home">← Back</button></div>
 <div id="page-maths" class="box hidden"><h2>🧮 Maths Solver</h2><input id="mathInput" placeholder="e.g. 25*4+10"><button class="btn" id="btnMaths">Solve →</button><div id="mathResult" class="result"></div><button class="copyBtn" data-copy="mathResult">📋 Copy</button><br><button class="btn2" data-go="home">← Back</button></div>
 <div id="page-expense" class="box hidden"><h2>💸 Expense Tracker</h2><input id="expIncome" type="number" placeholder="Income e.g. 50000"><input id="expList" placeholder="e.g. food:15000, transport:5000"><button class="btn" id="btnExpense">Calculate →</button><div id="expResult" class="result"></div><button class="copyBtn" data-copy="expResult">📋 Copy</button><br><button class="btn2" data-go="home">← Back</button></div>
-<div id="page-premium" class="box hidden"><h2>👑 Blinkbase Premium</h2><p style="color:#999">₦500/month - Unlimited tools, Priority support.</p><button class="btn" id="btnPremium">Chat Franklin to Pay →</button><br><button class="btn2" data-go="home">← Back</button></div>
+<div id="page-premium" class="box hidden"><h2>👑 Blinkbase Premium</h2><p style="color:#999">₦500/month - Unlimited tools, Priority support, Early access to Blink AI Pro.</p><button class="btn" id="btnPremium">Chat Franklin to Pay →</button><br><button class="btn2" data-go="home">← Back</button></div>
 
-<div class="footer">⚡ <b style="color:#FFD700">BLINKBASE</b><br>Built by Franklin • Lagos • © 2026</div>
+<div class="footer">⚡ <b style="color:#FFD700">BLINKBASE</b><br>Built by Franklin • Lagos • © 2026<br>One App. All Your Tools + AI.</div>
 
 <script>
 var Q=[
@@ -121,36 +144,23 @@ var Q=[
 {q:"Square root of 144?",o:["11","12","13","14"],a:1}
 ];
 var qi=0,score=0,player="Player",secret=Math.floor(Math.random()*100)+1,tries=0,timerInt=null,timeLeft=10;
-var pages=["home","write","study","business","planner","creator","translate","quiz","guess","cv","maths","expense","premium"];
+var pages=["home","ai","motiv","write","study","business","planner","creator","translate","quiz","guess","cv","maths","expense","premium"];
 function hideAll(){for(var i=0;i<pages.length;i++){var el=document.getElementById("page-"+pages[i]);if(el)el.classList.add("hidden");}}
 function goPage(n){if(timerInt)clearInterval(timerInt);hideAll();var el=document.getElementById("page-"+n);if(el)el.classList.remove("hidden");window.scrollTo(0,0);if(n==="quiz"){document.getElementById("quizStart").classList.remove("hidden");document.getElementById("quizPlay").classList.add("hidden");document.getElementById("quizEnd").classList.add("hidden");}}
 function showR(id,txt){var r=document.getElementById(id);r.style.display="block";r.innerText=txt;}
 document.addEventListener("click",function(e){
-var t=e.target;while(t && !t.getAttribute("data-go") && !t.getAttribute("data-copy")){t=t.parentElement;}if(!t)return;
+var t=e.target;while(t && !t.getAttribute("data-go") && !t.getAttribute("data-copy") && !t.getAttribute("data-q")){t=t.parentElement;}if(!t)return;
 if(t.getAttribute("data-go")){goPage(t.getAttribute("data-go"));}
 if(t.getAttribute("data-copy")){var txt=document.getElementById(t.getAttribute("data-copy")).innerText;if(!txt){alert("Generate first!");return;}navigator.clipboard.writeText(txt).then(function(){alert("Copied!");});}
+if(t.getAttribute("data-q")){document.getElementById("aiInput").value=t.getAttribute("data-q");askAI();}
 });
 function setup(id,fn){var b=document.getElementById(id);if(b)b.onclick=fn;}
-setup("btnWrite",function(){var topic=document.getElementById("writeTopic").value||"My Dream";var type=document.getElementById("writeType").value;var out="";if(type==="Essay")out="ESSAY: "+topic+"\n\nIntroduction:\n"+topic+" is very important today.\n\nBody:\nFirst, it helps us understand ourselves. Second, it teaches discipline. Third, it opens new opportunities.\n\nConclusion:\n"+topic+" is a journey. Keep pushing!\n\n- Blinkbase";else if(type==="Email")out="Subject: Regarding "+topic+"\n\nHello,\n\nI am writing about "+topic+".\n\nBest regards,\nFranklin";else out="✨ "+topic+" ✨\n\nNo be luck. Na focus + consistency.\n#Blinkbase";showR("writeResult",out);});
-setup("btnStudy",function(){var text=document.getElementById("studyInput").value;if(text.length<20){alert("Paste longer note");return;}var s=text.split(".").filter(function(x){return x.trim().length>5});showR("studyResult","SUMMARY:\n"+s.slice(0,2).join(". ")+".\n\nKEY POINTS:\n1. "+(s[0]||"").trim()+"\n2. "+(s[1]||"").trim());});
-setup("btnBiz",function(){var biz=document.getElementById("bizInput").value||"My Business";showR("bizResult","PLAN: "+biz+"\n\nNAMES: "+biz+" Hub | Blink "+biz+"\nPRICING: Starter N2k-5k | Standard N7k-15k | Premium N20k+\nGET CUSTOMERS: Post WhatsApp Status 7 days, Tell 10 friends\nFIRST STEP: Tell 1 person today!");});
-setup("btnPlan",function(){var raw=document.getElementById("planInput").value;if(!raw){alert("Type tasks!");return;}var tasks=raw.split(",");var times=["8:00 AM","10:00 AM","12:00 PM","2:00 PM","4:00 PM","6:00 PM","8:00 PM"];var out="YOUR PLAN:\n\n";for(var i=0;i<tasks.length;i++){var t=tasks[i].trim();if(t)out+=(times[i]||"9:00 PM")+" - "+t+"\n";}showR("planResult",out);});
-setup("btnCreator",function(){var topic=document.getElementById("creatorInput").value||"My Story";showR("creatorResult","IDEAS FOR: "+topic+"\n\n1. HOOK: I no believe wetin happen when I try "+topic+"...\n2. TUTORIAL: 3 things I learn from "+topic+"\n3. STORYTIME: How "+topic+" change my life");});
-setup("btnTrans",function(){var orig=document.getElementById("transInput").value;var txt=orig.trim().toLowerCase();var dict={"how are you?":"How you dey?","thank you":"Thank you well well","i am hungry":"Hunger dey catch me","how you dey?":"How are you?","no wahala":"No problem","abeg":"Please"};var f=dict[txt]||orig+" o! Na so e be.";showR("transResult","Original: "+orig+"\nTo "+document.getElementById("transTo").value+": "+f);});
-setup("btnQuiz",function(){player=document.getElementById("playerName").value||"Player";qi=0;score=0;document.getElementById("quizStart").classList.add("hidden");document.getElementById("quizEnd").classList.add("hidden");document.getElementById("quizPlay").classList.remove("hidden");showQ();});
-setup("btnQuizAgain",function(){player=document.getElementById("playerName").value||"Player";qi=0;score=0;document.getElementById("quizStart").classList.add("hidden");document.getElementById("quizEnd").classList.add("hidden");document.getElementById("quizPlay").classList.remove("hidden");showQ();});
-setup("btnShare",function(){var text="I scored "+score+"/10 for Blinkbase Quiz HARD! Can you beat me? Play here: https://fakachukwu92-bit.github.io/My-first-website-/";window.open("https://wa.me/?text="+encodeURIComponent(text),"_blank");});
-setup("btnGuess",function(){var g=parseInt(document.getElementById("guessInput").value);if(!g||g<1||g>100){alert("Type 1-100");return;}tries++;if(g===secret){showR("guessResult","YOU WIN! Number na "+secret+"! You use "+tries+" tries!");}else if(tries>=4){showR("guessResult","Game Over! Number na "+secret+". Press New Game!");}else if(g<secret){showR("guessResult","Too small! Try bigger. Tries left: "+(4-tries));}else{showR("guessResult","Too big! Try smaller. Tries left: "+(4-tries));}});
-setup("btnGuessReset",function(){secret=Math.floor(Math.random()*100)+1;tries=0;document.getElementById("guessInput").value="";document.getElementById("guessResult").style.display="none";});
-setup("btnCV",function(){var n=document.getElementById("cvName").value||"Your Name";var j=document.getElementById("cvJob").value||"Professional";var s=document.getElementById("cvSkills").value||"Hardworking, Fast learner";showR("cvResult","CV - "+n.toUpperCase()+"\n\nRole: "+j+"\n\nABOUT ME:\nI am a motivated "+j.toLowerCase()+" with passion for growth.\n\nSKILLS:\n- "+s.split(",").join("\n- ")+"\n\n- Made with Blinkbase CV Maker");});
-setup("btnMaths",function(){var q=document.getElementById("mathInput").value.trim();if(!q){alert("Type maths e.g. 25*4+10");return;}try{var ans=Function("return "+q.replace(/x/g,"*"))();showR("mathResult","Question: "+q+"\nAnswer: "+ans);}catch(e){showR("mathResult","Try format like 25*4+10");}});
-setup("btnExpense",function(){var income=parseFloat(document.getElementById("expIncome").value)||0;var list=document.getElementById("expList").value;if(!list){alert("Type expenses like food:15000, transport:5000");return;}var parts=list.split(",");var total=0;var br="";for(var i=0;i<parts.length;i++){var pp=parts[i].split(":");var name=(pp[0]||"Item").trim();var amt=parseFloat(pp[1])||0;total+=amt;br+="- "+name+": N"+amt+"\n";}var left=income-total;showR("expResult","Income: N"+income+"\n\nEXPENSES:\n"+br+"\nTotal Spent: N"+total+"\nMoney Left: N"+left);});
-setup("btnPremium",function(){window.open("https://wa.me/?text="+encodeURIComponent("Hello Franklin! I wan pay N500 for Blinkbase Premium"),"_blank");});
-function showQ(){if(timerInt)clearInterval(timerInt);timeLeft=10;document.getElementById("timer").innerText="⏱️ "+timeLeft+"s";timerInt=setInterval(function(){timeLeft--;document.getElementById("timer").innerText="⏱️ "+timeLeft+"s";if(timeLeft<=0){clearInterval(timerInt);qi++;if(qi<Q.length)showQ();else endQuiz();}},1000);var cur=Q[qi];document.getElementById("quizQ").innerText="Q"+(qi+1)+": "+cur.q;document.getElementById("quizProgress").innerText="Question "+(qi+1)+" / 10 | Score: "+score;var html="";for(var i=0;i<cur.o.length;i++){html+='<div class="opt" data-ans="'+i+'">'+cur.o[i]+'</div>';}document.getElementById("quizOpts").innerHTML=html;
-var opts=document.querySelectorAll("#quizOpts .opt");for(var k=0;k<opts.length;k++){opts[k].onclick=function(){var v=parseInt(this.getAttribute("data-ans"));if(timerInt)clearInterval(timerInt);if(v===Q[qi].a)score++;qi++;if(qi<Q.length)showQ();else endQuiz();};}
-}
-function endQuiz(){if(timerInt)clearInterval(timerInt);document.getElementById("quizPlay").classList.add("hidden");document.getElementById("quizEnd").classList.remove("hidden");document.getElementById("quizScore").innerText=player+" - You scored "+score+"/10!";document.getElementById("quizMsg").innerText=score>=7?"CHAMPION! You be genius!":score>=4?"Good try!":"Hard abi? Try again!";try{var best=parseInt(localStorage.getItem("blinkBest")||"0");if(score>best)localStorage.setItem("blinkBest",score);document.getElementById("bestScore").innerText=score+"/10";}catch(e){}}
-goPage("home");
-</script>
-</body>
-</html>
+function addMsg(txt,who){var box=document.getElementById("chatBox");var d=document.createElement("div");d.className="msg "+(who==="user"?"msgUser":"msgAI");d.innerText=txt;box.appendChild(d);box.scrollTop=box.scrollHeight;}
+function getAIReply(q){
+q=q.toLowerCase();
+if(q.indexOf("money")>=0||q.indexOf("make")>=0&&q.indexOf("money")>=0)return "💰 HOW TO MAKE MONEY AS STUDENT:\n\n1. Sell something for WhatsApp - data, thrift clothes, snacks\n2. Learn one skill - design, video editing, coding like Franklin did with Blinkbase\n3. Offer service - help people do CV, assignments, social media\n\nStart with N0: Tell 5 people today wetin you fit do for them. No wait for perfect time!";
+if(q.indexOf("motivat")>=0)return "🔥 LISTEN:\n\nNobody go come save you. Your future na your hand. You don already start - you dey use Blinkbase, you dey learn. That alone put you ahead of 90% of people wey dey just scroll TikTok.\n\nDo 1 small thing today. Just 1. Then tomorrow do another 1. Na so success dey build.";
+if(q.indexOf("study")>=0||q.indexOf("exam")>=0)return "📚 STUDY TIPS WEY DEY WORK:\n\n1. Study 25 mins, rest 5 mins - no marathon\n2. Teach someone wetin you learn - if you fit teach am, you sabi am\n3. Use Blinkbase Study Helper to summarize your notes\n4. Sleep well before exam, cramming for night no dey help";
+if(q.indexOf("business")>=0||q.indexOf("idea")>=0)return "💼 BUSINESS IDEAS FOR YOU:\n\n1. Mini importation - buy cheap for AliExpress, sell for WhatsApp\n2. Content creation - document your journey like Blinkbase story\n3. Tutorial service - teach JAMB, WAEC students online\n4. Food business - small chops, snacks for your area\n\nPick 1, start small this week. No overthink!";
+if(q.indexOf("hello")>=0||q.indexOf("hi")>=0||q.indexOf("how are you")>=0)return "Hello! 👋 I dey fine, I dey here for you! Ask me about money, business, study, motivation, or anything. Wetin you wan achieve today?";
+if(q.indexOf("love")>=0||q.indexOf("girlfriend")>=0||q.indexOf("boyfriend")>=0)return "😅 Love matter... My advice: Focus on building yourself first. When you dey grow, the right person
